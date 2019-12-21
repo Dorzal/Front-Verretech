@@ -1,6 +1,5 @@
-FROM php:7.2-fpm
+FROM php:7.3-fpm
 
-LABEL maintainer="NicolasFrey"
 
 # Install some useful packages
 RUN apt-get update
@@ -11,11 +10,10 @@ RUN docker-php-ext-configure intl
 RUN docker-php-ext-install intl
 RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql
 RUN docker-php-ext-install pdo_pgsql pgsql
-RUN docker-php-ext-install zip
 
 ### Config
-COPY php.ini /etc/php/7.2/php.ini
-COPY php-fpm-pool.conf /etc/php/7.2/pool.d/www.conf
+COPY php.ini /etc/php/7.3/php.ini
+COPY php-fpm-pool.conf /etc/php/7.3/pool.d/www.conf
 
 RUN rm -rf /var/lib/apt/lists/* /tmp/*
 RUN apt-get clean
