@@ -1,0 +1,22 @@
+version: '3'
+
+networks: 
+  default:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 192.168.3.0/24
+
+services:
+
+  nginx:
+    image: nginx:1.15.6-alpine
+    container_name: nginx
+    restart: 'no'
+    ports:
+      - '80:80'
+    volumes:
+      - .docker/conf:/etc/nginx/conf.d
+    networks:
+      - default
