@@ -22,6 +22,7 @@ class ArticleFixtures extends Fixture implements DependentFixtureInterface
             $product->setName('product '.$i);
             $product->setPrice(mt_rand(10, 100));
             $product->setStatus("disponible");
+            $product->setPhotoUrls(['img.jpg', 'img.png']);
             $product->setCategory($this->getReference("category".strval(mt_rand(0,4))));
             $manager->persist($product);
         }
